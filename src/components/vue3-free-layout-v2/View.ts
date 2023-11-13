@@ -1,18 +1,12 @@
-import {Container} from "./Container";
-import type { Raw} from "vue";
-import {markRaw} from "vue";
-
-export class View extends Container{
+export class View {
     width: number = 0;
     height: number = 0;
     x: number = 0;
     y: number = 0;
     backgroundColor: string = 'transparent';
-    bindingDom: Raw<HTMLElement> | null = null;
-    parent: View | null = null;
+    bindDom: HTMLElement | null = null;
 
     constructor(data?: Partial<View>) {
-        super();
         Object.assign(this, data);
     }
 
@@ -26,7 +20,7 @@ export class View extends Container{
         }
     }
 
-    bindDom(el: any) {
-        this.bindingDom = markRaw(el)
+    setBindDom(el: any) {
+        this.bindDom = el
     }
 }
